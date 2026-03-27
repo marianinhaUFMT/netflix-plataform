@@ -1,0 +1,419 @@
+:root {
+	--bg-main: #141414; /* Cor principal do fundo da pagina. */
+	--bg-deep: #0a0a0a; /* Cor mais escura para dar profundidade ao gradiente. */
+	--surface: #1c1c1c; /* Cor base para superficies/cartoes. */
+	--surface-hover: #272727; /* Cor alternativa para estado de hover em superficies. */
+	--text-main: #f5f5f1; /* Cor principal dos textos. */
+	--text-muted: #9f9f9f; /* Cor secundaria para textos menos destacados. */
+	--brand: #e50914; /* Cor de marca inspirada na Netflix. */
+	--brand-glow: rgba(229, 9, 20, 0.45); /* Cor do brilho aplicado na marca. */
+	--ring: #ffffff; /* Cor do anel de foco para acessibilidade. */
+	--bg-spot-1: rgba(229, 9, 20, 0.2); /* Mancha de destaque no fundo. */
+	--bg-spot-2: rgba(255, 255, 255, 0.06); /* Mancha secundaria no fundo. */
+	--bg-stripe: rgba(255, 255, 255, 0.015); /* Cor das linhas discretas da textura. */
+	--card-bg-1: rgba(255, 255, 255, 0.045); /* Inicio do gradiente do card no tema escuro. */
+	--card-bg-2: rgba(255, 255, 255, 0.02); /* Fim do gradiente do card no tema escuro. */
+	--card-hover-1: rgba(255, 255, 255, 0.085); /* Inicio do gradiente do card em hover. */
+	--card-hover-2: rgba(255, 255, 255, 0.02); /* Fim do gradiente do card em hover. */
+	--card-border: rgba(255, 255, 255, 0.07); /* Cor da borda padrao do card. */
+	--card-border-hover: rgba(255, 255, 255, 0.35); /* Cor da borda do card em hover/foco. */
+	--caption-strong: #f5f5f1; /* Cor da legenda em destaque. */
+	--shadow-card: 0 14px 30px rgba(0, 0, 0, 0.45); /* Sombra dos cards no tema escuro. */
+	--toggle-bg: rgba(255, 255, 255, 0.1); /* Fundo do botao de tema. */
+	--toggle-border: rgba(255, 255, 255, 0.22); /* Borda do botao de tema. */
+	--toggle-text: #f5f5f1; /* Cor do texto do botao de tema. */
+	--toggle-hover: rgba(255, 255, 255, 0.18); /* Fundo do botao no hover. */
+}
+
+:root[data-theme="light"] {
+	--bg-main: #f7f7f7; /* Fundo principal no modo claro. */
+	--bg-deep: #ececec; /* Fundo de apoio no modo claro. */
+	--surface: #ffffff; /* Superficie base no modo claro. */
+	--surface-hover: #f2f2f2; /* Superficie hover no modo claro. */
+	--text-main: #1b1b1b; /* Texto principal no modo claro. */
+	--text-muted: #4d4d4d; /* Texto secundario no modo claro. */
+	--brand-glow: rgba(229, 9, 20, 0.22); /* Brilho da marca no modo claro. */
+	--ring: #141414; /* Cor do foco no modo claro. */
+	--bg-spot-1: rgba(229, 9, 20, 0.12); /* Mancha principal suavizada no modo claro. */
+	--bg-spot-2: rgba(0, 0, 0, 0.06); /* Mancha secundaria no modo claro. */
+	--bg-stripe: rgba(0, 0, 0, 0.02); /* Linhas de textura no modo claro. */
+	--card-bg-1: rgba(0, 0, 0, 0.03); /* Inicio do gradiente do card no modo claro. */
+	--card-bg-2: rgba(0, 0, 0, 0.015); /* Fim do gradiente do card no modo claro. */
+	--card-hover-1: rgba(0, 0, 0, 0.08); /* Inicio do gradiente do card em hover no modo claro. */
+	--card-hover-2: rgba(0, 0, 0, 0.02); /* Fim do gradiente do card em hover no modo claro. */
+	--card-border: rgba(0, 0, 0, 0.14); /* Borda padrao do card no modo claro. */
+	--card-border-hover: rgba(0, 0, 0, 0.32); /* Borda do card em hover/foco no modo claro. */
+	--caption-strong: #111111; /* Cor de destaque da legenda no modo claro. */
+	--shadow-card: 0 12px 24px rgba(0, 0, 0, 0.14); /* Sombra do card no modo claro. */
+	--toggle-bg: rgba(0, 0, 0, 0.08); /* Fundo do botao no modo claro. */
+	--toggle-border: rgba(0, 0, 0, 0.22); /* Borda do botao no modo claro. */
+	--toggle-text: #1b1b1b; /* Cor do texto do botao no modo claro. */
+	--toggle-hover: rgba(0, 0, 0, 0.14); /* Hover do botao no modo claro. */
+}
+
+* {
+	box-sizing: border-box; /* Inclui borda e padding no calculo do tamanho total. */
+	margin: 0; /* Remove margens padrao de todos os elementos. */
+	padding: 0; /* Remove paddings padrao de todos os elementos. */
+}
+
+body {
+	min-height: 100vh; /* Garante altura minima ocupando toda a viewport. */
+	font-family: "Helvetica Neue", "Segoe UI", sans-serif; /* Define a familia tipografica principal. */
+	color: var(--text-main); /* Define a cor padrao de texto no corpo. */
+	background:
+		radial-gradient(circle at 15% 10%, var(--bg-spot-1) 0%, transparent 35%),
+		radial-gradient(circle at 85% 80%, var(--bg-spot-2) 0%, transparent 35%),
+		linear-gradient(160deg, var(--bg-deep) 0%, var(--bg-main) 45%, #101010 100%); /* Compoe um fundo com gradientes para profundidade visual. */
+	display: grid; /* Usa grid para facilitar centralizacao do conteudo. */
+	place-items: center; /* Centraliza os itens nos eixos horizontal e vertical. */
+	overflow-x: hidden; /* Evita barra horizontal caso haja overflow lateral. */
+}
+
+body::before {
+	content: ""; /* Cria pseudo-elemento decorativo sem texto. */
+	position: fixed; /* Mantem a camada fixa durante o scroll. */
+	inset: 0; /* Expande o pseudo-elemento para cobrir toda a tela. */
+	background-image: repeating-linear-gradient(
+		90deg,
+		var(--bg-stripe) 0,
+		var(--bg-stripe) 1px,
+		transparent 1px,
+		transparent 3px
+	); /* Aplica textura de linhas verticais discretas no fundo. */
+	pointer-events: none; /* Impede que a camada bloqueie cliques. */
+	opacity: 0.55; /* Controla a intensidade da textura sobre o fundo. */
+}
+
+header {
+    text-align: center; 
+    margin-bottom: 2rem; 
+    width: 100%;
+    /* Remova o position: relative daqui para o botão de tema não se prender a este bloco se quiser ele no topo da página */
+}
+
+.theme-toggle {
+    position: fixed; /* Mude para fixed para acompanhar a logo */
+    right: 2rem;
+    top: 1.5rem;
+    padding: 0.45rem 0.8rem;
+    border: 1px solid var(--toggle-border);
+    background: var(--toggle-bg);
+    color: var(--toggle-text);
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 999px;
+    cursor: pointer;
+    z-index: 10;
+    transition: background-color 180ms ease, transform 180ms ease;
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
+	background: var(--toggle-hover); /* Destaca o botao no hover/foco. */
+	transform: translateY(-1px); /* Da pequeno feedback de elevacao. */
+}
+
+.theme-toggle:focus-visible {
+	outline: 2px solid var(--ring); /* Exibe foco visivel para navegacao por teclado. */
+	outline-offset: 2px; /* Afasta o contorno para melhor leitura visual. */
+}
+
+header::before {
+    content: "NETFLIX";
+    position: fixed; /* Fixa na tela */
+    top: 1.5rem;
+    left: 2rem;
+    font-size: 1.6rem;
+    letter-spacing: 0.08em;
+    font-weight: 800;
+    color: var(--brand);
+    text-shadow: 0 0 24px var(--brand-glow);
+    z-index: 10; /* Garante que fique acima de tudo */
+    margin-bottom: 0; /* Remove a margem que empurrava o título */
+}
+
+h1 {
+    font-size: clamp(1.8rem, 5vw, 3.5rem);
+    font-weight: 500;
+    color: var(--text-main);
+    letter-spacing: 0.02em;
+    text-align: center;
+    margin-top: 2rem; /* Adiciona um espaço para não bater no topo em telas pequenas */
+    animation: fadeSlideIn 650ms ease-out both;
+}
+
+main {
+	width: min(960px, 92vw); /* Limita a largura maxima e respeita a viewport. */
+	padding: 2rem 1rem; /* Cria espaco interno ao redor do conteudo principal. */
+}
+
+section {
+	display: flex; /* Usa flex para alinhamento simples dos filhos. */
+	justify-content: center; /* Centraliza horizontalmente os itens dentro da secao. */
+}
+
+.profiles-wrapper,
+.profiles {
+	list-style: none; /* Remove marcadores numericos e bullets das listas. */
+}
+
+.profiles-wrapper {
+	width: 100%; /* Faz a lista externa acompanhar a largura disponivel da area de navegacao. */
+	display: flex; /* Permite centralizar a lista interna de perfis com mais precisao. */
+	justify-content: center; /* Centraliza horizontalmente o bloco de perfis. */
+}
+
+.profiles {
+	margin-top: 2.8rem; /* Afasta os perfis do titulo. */
+	display: flex; /* Organiza os perfis lado a lado no eixo horizontal. */
+	flex-wrap: nowrap; /* Mantem todos os perfis em uma unica linha no desktop. */
+	justify-content: center; /* Centraliza o conjunto de perfis no container. */
+	overflow-x: visible; /* Remove comportamento de rolagem horizontal. */
+	padding-bottom: 0; /* Remove folga extra usada apenas para area rolavel. */
+	gap: clamp(1rem, 3vw, 2rem); /* Define espacamento adaptavel entre os cards. */
+	width: fit-content; /* Faz a trilha ocupar apenas o espaco dos perfis para centralizacao mais limpa. */
+}
+
+.profiles > li {
+	flex: 0 1 clamp(110px, 15vw, 180px); /* Reduz e flexibiliza os cards para caberem sem scroll. */
+}
+
+.profile {
+	text-decoration: none; /* Remove sublinhado padrao dos links. */
+	color: inherit; /* Mantem a cor de texto herdada do contexto. */
+	border-radius: 14px; /* Arredonda cantos da area clicavel. */
+	animation: fadeSlideIn 550ms ease-out both; /* Anima entrada de cada perfil. */
+}
+
+
+.profiles > li:nth-child(2) .profile {
+	animation-delay: 90ms; /* Atrasa ligeiramente o segundo card para efeito de sequencia. */
+}
+
+figure {
+	background: linear-gradient(165deg, var(--card-bg-1), var(--card-bg-2)); /* Cria fundo suave no card. */
+	border: 1px solid var(--card-border); /* Define borda discreta para delimitar o card. */
+	border-radius: 14px; /* Arredonda cantos do card. */
+	padding: 0.7rem; /* Cria espaco interno em torno da imagem e legenda. */
+	transition: transform 220ms ease, border-color 220ms ease, background-color 220ms ease, box-shadow 220ms ease; /* Suaviza mudancas visuais de hover/foco. */
+}
+
+.profile img {
+	width: 100%; /* Faz a imagem ocupar toda a largura do card. */
+	display: block; /* Remove espacos de inline image e melhora alinhamento. */
+	border-radius: 10px; /* Arredonda cantos da imagem. */
+	aspect-ratio: 1 / 1; /* Mantem formato quadrado da imagem. */
+	object-fit: cover; /* Recorta a imagem para preencher sem distorcer. */
+	filter: saturate(0.92) brightness(0.95); /* Deixa o estado inicial um pouco menos vibrante. */
+	transition: filter 220ms ease; /* Suaviza alteracao de filtro no hover/foco. */
+}
+
+figcaption {
+	text-align: center; /* Centraliza o texto da legenda. */
+	margin-top: 0.75rem; /* Separa a legenda da imagem. */
+	font-size: 1.05rem; /* Define tamanho da legenda do perfil. */
+	color: var(--text-muted); /* Aplica cor secundaria na legenda. */
+	transition: color 220ms ease; /* Suaviza mudanca de cor da legenda. */
+}
+
+.profile:hover figure,
+.profile:focus-visible figure {
+	transform: translateY(-6px) scale(1.015); /* Eleva e amplia levemente o card em interacao. */
+	border-color: var(--card-border-hover); /* Destaca a borda durante hover/foco. */
+	background: linear-gradient(165deg, var(--card-hover-1), var(--card-hover-2)); /* Clareia sutilmente o fundo no estado ativo. */
+	box-shadow: var(--shadow-card); /* Cria sombra para reforcar profundidade no estado ativo. */
+}
+
+.profile:hover img,
+.profile:focus-visible img {
+	filter: saturate(1.05) brightness(1.08); /* Aumenta vividez e brilho da imagem ao interagir. */
+}
+
+.profile:hover figcaption,
+.profile:focus-visible figcaption {
+	color: var(--caption-strong); /* Torna o texto da legenda mais destacado no estado ativo. */
+}
+
+.profile:focus-visible {
+	outline: none; /* Remove outline padrao para usar foco customizado no figure. */
+}
+
+.profile:focus-visible figure {
+	box-shadow: 0 0 0 3px var(--ring), 0 0 0 7px var(--brand), 0 14px 30px rgba(0, 0, 0, 0.45); /* Desenha anel de foco visivel e acessivel. */
+}
+
+@keyframes fadeSlideIn {
+	from {
+		opacity: 0; /* Inicia a animacao invisivel. */
+		transform: translateY(12px); /* Inicia com deslocamento vertical para baixo. */
+	}
+	to {
+		opacity: 1; /* Finaliza totalmente visivel. */
+		transform: translateY(0); /* Finaliza na posicao original. */
+	}
+}
+
+@media (max-width: 740px) {
+	header {
+		position: static; /* Remove fixacao para melhor fluxo em telas menores. */
+		width: 100%; /* Faz o header ocupar toda a largura. */
+		padding: 1.5rem 1rem 0; /* Ajusta espacamento interno para tablet/mobile. */
+		text-align: center; /* Centraliza conteudo do cabecalho. */
+	}
+
+	.theme-toggle {
+		position: static; /* Coloca o botao no fluxo para evitar sobreposicao no mobile. */
+		margin: 0 auto 0.9rem; /* Centraliza o botao e cria distancia para o titulo. */
+		display: inline-block; /* Permite centralizacao horizontal via margin auto. */
+	}
+
+	header::before {
+		margin-bottom: 1rem; /* Reduz distancia entre marca e titulo em telas menores. */
+	}
+
+	.profiles {
+		flex-wrap: wrap; /* Em telas menores permite quebra para manter legibilidade. */
+		justify-content: center; /* Mantem os perfis centralizados mesmo em telas menores. */
+		gap: 0.9rem; /* Diminui espacamento entre cards para caber melhor. */
+		margin-top: 1.8rem; /* Reduz espacamento superior da grade. */
+		width: 100%; /* Garante centralizacao consistente ao ocupar toda a largura no mobile/tablet. */
+	}
+
+	.profiles > li {
+		flex-basis: clamp(105px, 28vw, 150px); /* Diminui cards para acomodar mais itens por linha sem rolagem. */
+	}
+
+	figcaption {
+		font-size: 0.95rem; /* Reduz tamanho da legenda em telas menores. */
+	}
+}
+
+@media (max-width: 1024px) {
+	main {
+		width: min(880px, 94vw); /* Ajusta o limite da area principal para notebooks e tablets grandes. */
+		padding: 1.5rem 1rem; /* Reduz o espacamento para caber melhor em largura intermediaria. */
+	}
+
+	.profiles {
+		justify-content: center; /* Recentraliza os perfis em telas intermediarias. */
+	}
+
+	.profiles > li {
+		flex-basis: clamp(115px, 16vw, 170px); /* Ajusta a largura dos cards para notebook/tablet sem exceder a linha. */
+	}
+}
+
+@media (max-width: 900px) and (orientation: landscape) {
+	body {
+		place-items: start center; /* Move conteudo para o topo em paisagem para evitar corte vertical. */
+	}
+
+	header {
+		position: static; /* Remove header fixo em paisagem para liberar altura util. */
+		padding-top: 1rem; /* Encurta o espaco superior em telas baixas. */
+	}
+
+	main {
+		padding-top: 0.75rem; /* Aproxima o conteudo do topo para melhor aproveitamento vertical. */
+	}
+
+	.profiles {
+		margin-top: 1.2rem; /* Diminui espaco acima da grade em modo paisagem. */
+		gap: 0.75rem; /* Compacta o espacamento entre cards para caber mais conteudo. */
+		justify-content: center; /* Centraliza os itens para evitar leitura lateral com scroll. */
+	}
+
+	.profiles > li {
+		flex-basis: clamp(105px, 18vw, 145px); /* Compacta os cards para caber melhor na altura reduzida. */
+	}
+}
+
+@media (max-width: 430px) {
+	main {
+		width: 96vw; /* Aumenta aproveitamento horizontal em celulares pequenos. */
+		padding-top: 1rem; /* Ajusta espacamento superior para o viewport compacto. */
+	}
+
+	.profiles {
+		justify-content: center; /* Centraliza os perfis no celular sem trilha rolavel. */
+		max-width: 100%; /* Mantem a lista limitada ao container para evitar overflow. */
+	}
+
+	.profiles > li {
+		flex-basis: clamp(100px, 27vw, 130px); /* Reduz um pouco os cards para caberem horizontalmente sem rolar. */
+	}
+
+	h1 {
+		font-size: clamp(1.3rem, 6vw, 1.75rem); /* Reduz o titulo para nao quebrar em varias linhas no celular. */
+	}
+
+	figure {
+		padding: 0.55rem; /* Deixa o card mais compacto em telas estreitas. */
+	}
+
+	figcaption {
+		font-size: 0.9rem; /* Ajusta a legenda para leitura confortavel em telas pequenas. */
+	}
+}
+
+@media (max-width: 320px) {
+	header::before {
+		font-size: 1.35rem; /* Diminui a marca para evitar overflow em celulares muito pequenos. */
+	}
+
+	main {
+		width: 98vw; /* Aproveita quase toda a largura disponivel no menor viewport. */
+	}
+
+	.profiles {
+		max-width: 100%; /* Mantem os perfis dentro da largura visivel em micro layout. */
+	}
+
+	.profiles > li {
+		flex-basis: clamp(90px, 29vw, 115px); /* Encurta mais os cards para telas muito pequenas. */
+	}
+}
+
+@media (min-width: 1600px) {
+	main {
+		width: min(1200px, 84vw); /* Expande a area util em monitores grandes sem ficar exagerado. */
+	}
+
+	.profiles {
+		justify-content: center; /* Centraliza a trilha horizontal em telas amplas. */
+		gap: clamp(1.5rem, 2vw, 2.5rem); /* Ajusta o espacamento proporcionalmente em resolucoes altas. */
+	}
+
+	.profiles > li {
+		flex-basis: clamp(140px, 12vw, 220px); /* Mantem cards equilibrados em telas amplas sem ficarem grandes demais. */
+	}
+
+	h1 {
+		font-size: clamp(2rem, 2.6vw, 3.5rem); /* Escala o titulo para manter impacto visual no desktop grande. */
+	}
+}
+
+@media (max-height: 700px) {
+	body {
+		place-items: start center; /* Alinha conteudo ao topo em telas com pouca altura. */
+	}
+
+	header {
+		position: static; /* Evita sobreposicao do cabecalho com o conteudo em altura reduzida. */
+		padding-top: 1rem; /* Reduz espacamento superior para caber melhor na altura curta. */
+	}
+
+	.profiles {
+		margin-top: 1.25rem; /* Compacta o espaco entre titulo e cards em telas baixas. */
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation: none !important; /* Remove animacoes para usuarios que preferem menos movimento. */
+		transition: none !important; /* Remove transicoes para reduzir estimulo visual. */
+	}
+}
