@@ -8,7 +8,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const profileIcon = document.querySelector('.profile-icon');
 
     if (kidsLink && nomePerfil) kidsLink.textContent = nomePerfil;
-    if (profileIcon && imagemPerfil) profileIcon.src = imagemPerfil;
+    if (profileIcon && imagemPerfil) {
+        const isRelativePath = !imagemPerfil.startsWith('/') && !imagemPerfil.includes(':');
+        profileIcon.src = isRelativePath ? `../${imagemPerfil}` : imagemPerfil;
+    }
 
     document.body.classList.add('profile-ready');
 
