@@ -36,7 +36,7 @@ export const categories = [
             { img: "https://wwwimage-us.pplusstatic.com/base/files/seo/atla_social_1200x627.jpg", youtube: "https://www.youtube.com/watch?v=ooVvH2IYz0w" }, // Avatar: A Lenda de Aang
             { img: "https://quintacapa.com.br/wp-content/uploads/2021/11/Arcane-league-of-legends-destaque-quinta-capa.png", youtube: "https://www.youtube.com/watch?v=Ft_QrPGXWqc" }, // Arcane
             { img: "https://metropolitanmagazine.it/wp-content/uploads/2021/01/fate-the-winx-saga-prime-impressioni-live-action-arriva-netflix-v8-51628-2.jpg", youtube: "https://www.youtube.com/watch?v=jZmW01kkiwE" }, // Fate: A Saga Winx
-            { img: "https://arrobanerd.com.br/wp-content/uploads/2022/06/terceira-temporada-de-the-umbrella-academy-e%CC%81-a-se%CC%81rie-mais-vista-da-semana-na-netflix-junho-2022.jpg", youtube: "https://www.youtube.com/watch?v=0DAmWHxeoKw" }, // The Umbrella Academy
+            { img: "https://officialregs.de/wp-content/uploads/2020/08/Umbrella-Academy-Netflix.jpg", youtube: "https://www.youtube.com/watch?v=0DAmWHxeoKw" }, // The Umbrella Academy
             { img: "https://i.ytimg.com/vi/_g8djuDkpBc/maxresdefault.jpg", youtube: "https://www.youtube.com/watch?v=GcTnWlOb8A8" }, // O Mundo Sombrio de Sabrina
         ]
     }
