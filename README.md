@@ -58,5 +58,5 @@ export const categories = [
 
 ---
 
-## 👨‍💻 Autor
+## 👨‍💻 Autora
 Desenvolvido por **Mariana** durante a Imersão Alura AI/Front-End.
